@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Reference Guide</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-bottom: 5px solid #ff6f00;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .toc {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+            max-width: 300px;
+            position: sticky;
+            top: 20px;
+            align-self: flex-start;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .toc h2 {
+            color: #1976d2;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #1976d2;
+            margin-bottom: 15px;
+        }
+        
+        .toc ul {
+            list-style-type: none;
+        }
+        
+        .toc li {
+            margin-bottom: 10px;
+        }
+        
+        .toc a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .toc a:hover {
+            background-color: #e3f2fd;
+            color: #1976d2;
+            transform: translateX(5px);
+        }
+        
+        .content {
+            flex: 3;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: #1976d2;
+            margin: 25px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #bbdefb;
+        }
+        
+        h3 {
+            color: #0d47a1;
+            margin: 20px 0 10px;
+        }
+        
+        h4 {
+             color: #1976d2;
+             margin-top: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .definition-box, .important-box {
+            background-color: #e3f2fd;
+            border-left: 4px solid #1976d2;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .important-box {
+            background-color: #fff8e1;
+            border-left: 4px solid #ff6f00;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .attack-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .attack-card {
+            background: #f5f7fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-top: 4px solid #1976d2;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .attack-card h4 {
+            color: #0d47a1;
+            margin-bottom: 10px;
+        }
+        
+        .example {
+            background-color: #f9f9f9;
+            border-left: 3px solid #4caf50;
+            padding: 10px 15px;
+            margin: 10px 0;
+            font-style: italic;
+        }
+        
+        .command-box {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .toc {
+                max-width: 100%;
+                margin-right: 0;
+                margin-bottom: 20px;
+                position: relative;
+                max-height: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Cybersecurity Reference Guide</h1>
+        <p class="subtitle">Comprehensive overview of threats, defenses, and best practices</p>
+    </header>
+    
+    <div class="container">
+        <aside class="toc">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#importance">Importance of Cybersecurity</a></li>
+                <li><a href="#challenges">Challenges in Cybersecurity</a></li>
+                <li><a href="#attackers">Types of Attackers</a></li>
+                <li><a href="#attacks">Common Attacks</a></li>
+                <li><a href="#social-engineering">Social Engineering</a></li>
+                <li><a href="#malware">Malware Types</a></li>
+                <li><a href="#malware-classification">Malware Classification</a></li>
+                <li><a href="#defenses">Defensive Measures</a></li>
+                <li><a href="#mobile-security">Mobile Security</a></li>
+                <li><a href="#technical">Technical Information</a></li>
+                <li><a href="#misc">Miscellaneous</a></li>
+            </ul>
+        </aside>
+        
+        <main class="content">
+            <section id="importance">
+                <h2>Importance of Cybersecurity</h2>
+                <p>Cybersecurity is critical in our increasingly digital world. As new types of attacks are developed, cybersecurity needs to be updated continually through updating defensive hardware and software, making backup copies of important data, and instituting business recovery policies.</p>
+                
+                <div class="important-box">
+                    <p>A defensive stance involves adopting an attitude and implementing strategies that make it challenging for attackers to compromise your digital life, safety, financial security, and privacy.</p>
+                </div>
+                
+                <p>Effective cybersecurity means that data resides on personal computers attached to the network, and local security on all computers is important to foil attacks that breach the perimeter.</p>
+            </section>
+            
+            <section id="challenges">
+                <h2>Challenges in Cybersecurity</h2>
+                <ul>
+                    <li>Protecting personal computers is challenging</li>
+                    <li>Many different types of attacks exist today, and attacks are constantly modified</li>
+                    <li>New attacks are created regularly</li>
+                    <li>No single defensive program exists - several different defenses must be in place</li>
+                    <li>Specific technical skills are needed to counteract these attacks</li>
+                    <li>Due to increased complexity of operating systems, unintentional vulnerabilities could be exploited by hackers</li>
+                </ul>
+                
+                <h3>Operating System Updates</h3>
+                <p>To address security issues, operating system vendors often put out updates through an automatic update service. These patches are software updates to address security issues.</p>
+            </section>
+            
+            <section id="attackers">
+                <h2>Types of Attackers</h2>
+                
+                <h3>Based on Motivation</h3>
+                <div class="attack-types">
+                    <div class="attack-card">
+                        <h4>Black Hat Hackers</h4>
+                        <p>Violate security for personal gain or to inflict malicious damage.</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>White Hat Hackers</h4>
+                        <p>Ethical attackers who probe systems (with permission) for weaknesses and privately provide that information back to the organization.</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Gray Hat Hackers</h4>
+                        <p>Attempt to break into systems (without permission), not for personal gain, but publicly disclose the attack to shame the organization into taking action.</p>
+                    </div>
+                </div>
+                
+                <h3>Based on Objectives</h3>
+                <div class="attack-types">
+                    <div class="attack-card">
+                        <h4>Cybercriminals</h4>
+                        <p>Attack for financial gain. Targets include individuals, enterprises, and governments.</p>
+                        <p class="example">Sample attack: steal credit card information</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Script Kiddies</h4>
+                        <p>Lack knowledge to perform attacks on their own; use automated attack software. Responsible for approximately 40% of attacks requiring low or no skills.</p>
+                        <p>Attack skill distribution: no skills (13%), low skills (28%), moderate skills (44%), high skills (15%)</p>
+                        <p class="example">Sample attack: erase data</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Brokers</h4>
+                        <p>Sell their knowledge of vulnerabilities to other attackers or governments.</p>
+                        <p class="example">Sample attack: find vulnerability</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Insiders</h4>
+                        <p>Organization's own employees/contractors/partners; cause 60% of data breaches through sabotage or theft of intellectual property.</p>
+                        <p>Usually are moving to a new job and want to "take their work" with them.</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Cyberterrorists</h4>
+                        <p>Ideologically motivated; almost impossible to predict when/where an attack may occur. Can be inactive for years.</p>
+                        <p>May attack a small group that will affect a large number of people.</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Hacktivists</h4>
+                        <p>Motivated by ideology; direct attacks at specific websites to promote a political agenda or retaliate for past events.</p>
+                        <p>Many spread fake news and support conspiracy theories.</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>State Actors</h4>
+                        <p>Government-hired attackers with high skills and plenty of resources; most attacks directed towards foreign businesses to cause financial harm or reputation damage.</p>
+                        <p>Unlike other categories, are guaranteed to keep working until success is achieved.</p>
+                        <p>Are a cause of a new class of attacks called Advanced Persistent Threat (APT).</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="attacks">
+                <h2>Common Attacks</h2>
+                
+                <div class="attack-types">
+                    <div class="attack-card">
+                        <h4>Online Brute Force Attack</h4>
+                        <p>Continuous attempts to guess a password, largely mitigated by account lockouts after failed tries.</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Zero-day Attacks</h4>
+                        <p>Attacks that use previously unknown vulnerabilities, giving zero days of advanced warning.</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Password Spraying Attack</h4>
+                        <p>Uses common passwords across many accounts to avoid detection. Has a low success rate.</p>
+                        <p>One or two common passwords are used trying to log in to several user accounts rather than multiple passwords to log in to one account.</p>
+                        <p>Less likely to be logged out from too many failed attempts.</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Password Collections</h4>
+                        <p>Attackers leverage stolen password databases to crack passwords efficiently. This is the most successful approach.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="social-engineering">
+                <h2>Social Engineering</h2>
+                <p>Social engineering involves impersonation (identity fraud) and then playing out the role of that person on a victim. To appear genuine, the attacker must know something about the victim.</p>
+                
+                <div class="example">
+                    <p>Example: An attacker could impersonate a help desk support technician and call the victim pretending there is a problem with the network. They would usually ask for the victim's username and password to reset the account.</p>
+                </div>
+                
+                <div class="attack-types">
+                    <div class="attack-card">
+                        <h4>Phishing</h4>
+                        <p>Most common attack based on social engineering - sending bogus email claiming to be from a legitimate business.</p>
+                        <p>Users directed to an imposter website controlled by attacker, attempts to trick user into providing personal information.</p>
+                        <p>Includes subtypes like "Smishing" (SMS-based) and "Vishing" (voice-based), as well as spear phishing, whaling, pharming, etc.</p>
+                        <div class="example">
+                            <p>Example: an invoice scam sends a fictitious overdue invoice that demands immediate payment.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Typo Squatting</h4>
+                        <p>Redirecting users to malicious sites through typos in URLs.</p>
+                        <p>Takes advantage of users who make a typing error when entering a URL address.</p>
+                        <p>Attackers purchase domain names spelled similarly to actual sites.</p>
+                        <div class="example">
+                            <p>Example: typing goggle.com (instead of google.com)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Hoaxes</h4>
+                        <p>Spreading false information to manipulate users into compromising their security.</p>
+                        <p>False warnings, often contained in an email message claiming to come from the IT department.</p>
+                        <p>Can be used as first step in attack. May warn of the virus and ask the user to take action, or even ask the user to call the attacker for help.</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Social Networking Risks</h4>
+                        <p>The use of Internet-based social media platforms to stay connected with friends, family, or peers.</p>
+                        <p>Personal data shared on social media can be used maliciously. The very nature of social networking carries significant security risks.</p>
+                    </div>
+                </div>
+                
+                <div class="important-box">
+                    <h4>Background Media</h4>
+                    <p>Examples include phishing emails, typo squatting URLs, and social media hoaxes.</p>
+                </div>
+            </section>
+            
+            <section id="malware">
+                <h2>Malware Types</h2>
+                <p><strong>Malware</strong> is software that enters a computer system without the owner's knowledge or consent, performing unwanted and usually harmful actions. The number of instances of malware is staggering, as it continues to evolve to avoid detection.</p>
+                
+                <h3>Ransomware</h3>
+                <p>Malicious software that "kidnaps" a user's computer and holds it "hostage" until a ransom is paid. Not easily traceable, as most cases use cryptocurrency. Top four targets: education, retail, business and professional services, government.</p>
+                
+                <div class="attack-types">
+                    <div class="attack-card">
+                        <h4>Blocker Ransomware</h4>
+                        <p>The earliest form of ransomware that manipulates the operating system to block all normal access to the system.</p>
+                        <p>Typically contains a message pretending to be from a reputable third party agency.</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Cryptomalware</h4>
+                        <p>A more malicious form that encrypts files (encrypting only some helps to evade detection).</p>
+                        <p>The attacker demands payment to provide decryption keys. Often the key either increases in price over time or is unable to be purchased after a certain period.</p>
+                        <p>A decryption tool is delivered in 99% of current cases. New variants can also encrypt files on connected devices/networks.</p>
+                    </div>
+                </div>
+                
+                <h3>Eavesdrop Malware</h3>
+                <p>Secretly collects data from its victims.</p>
+                
+                <div class="attack-types">
+                    <div class="attack-card">
+                        <h4>Keylogger</h4>
+                        <p>Captures and stores each keystroke a user types on the computer's keyboard. Can be software or hardware-based.</p>
+                        <p>Captures passwords, credit card numbers, or personal information.</p>
+                        <p>Software keyloggers can make screen captures or silently turn on the computer's web camera.</p>
+                        <p>Hardware keyloggers are installed between the computer keyboard and the USB port.</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Spyware</h4>
+                        <p>Tracking software deployed without the consent or control of the user.</p>
+                        <p>Collects and distributes personal or sensitive information.</p>
+                        <p>Technologies include:
+                            <ul>
+                                <li>Automatic download software</li>
+                                <li>Passive tracking technologies</li>
+                                <li>System modifying software</li>
+                                <li>Tracking software</li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+                
+                <h3>Masquerade Malware</h3>
+                <p>Attempts to deceive the user and hide its true identity.</p>
+                
+                <div class="attack-types">
+                    <div class="attack-card">
+                        <h4>Potentially Unwanted Programs (PUPs)</h4>
+                        <p>A broad category that is often more annoying than malicious, such as advertisements displayed through pop-up windows.</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Trojans</h4>
+                        <p>An executable that hides itself as performing a benign activity, but does something malicious.</p>
+                        <p class="example">Example: user downloads a useful program (like a calendar), yet this installation also installs malware that scans the system for personal information.</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Remote Access Trojans (RATs)</h4>
+                        <p>A special type of Trojan that gives the threat agent unauthorized remote access to the victim's computer.</p>
+                        <p>Attacker can change computer settings, browse and copy files, and use the computer to access other computers on the network.</p>
+                    </div>
+                </div>
+                
+                <h3>Launchpad Malware</h3>
+                <p>Infects a computer and uses it as a launchpad to send attacks to other computers.</p>
+                
+                <div class="attack-types">
+                    <div class="attack-card">
+                        <h4>Virus</h4>
+                        <p>Two types: file-based and fileless.</p>
+                        <p>File-based: malicious code attached to a file. When launched, the virus unloads a payload and reproduces itself.</p>
+                        <p>Fileless: takes advantage of native services and processes that are part of the operating system (LOLBins).</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Worm</h4>
+                        <p>Malicious program that uses a computer network to replicate.</p>
+                        <p>Enters a computer through the network by taking advantage of a vulnerability.</p>
+                        <p>Modern worms can leave behind a payload and cause harm, such as deleting files or granting remote access.</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Bot</h4>
+                        <p>Payload of malware that allows the infected computer to be remotely controlled to launch attacks.</p>
+                        <p>The infected computer is known as a "bot" or a "zombie".</p>
+                        <p>Botnets can be used for spamming, spreading malware, ad fraud, and mining cryptocurrencies.</p>
+                    </div>
+                </div>
+                
+                <h3>Other Malware Types</h3>
+                
+                <div class="attack-types">
+                    <div class="attack-card">
+                        <h4>Backdoor</h4>
+                        <p>Software code that gives access to a computer, program or service that bypasses normal security protections.</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Logic Bomb</h4>
+                        <p>Computer code that lies dormant until triggered by a specific event, then performs malicious activities.</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Rootkit</h4>
+                        <p>Malware that can hide its own presence, as well as the presence of other malware on the computer.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="malware-classification">
+                <h2>Malware Classification by Primary Action</h2>
+                
+                <div class="attack-types">
+                    <div class="attack-card">
+                        <h4>Kidnap</h4>
+                        <p>Holds a system or data hostage for ransom (e.g., ransomware).</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Eavesdrop</h4>
+                        <p>Secretly collects data from victims (e.g., keyloggers, spyware).</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Masquerade</h4>
+                        <p>Deceives users by pretending to be something else (e.g., Trojans, PUPs).</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Launchpad</h4>
+                        <p>Uses infected systems to attack other computers (e.g., viruses, worms, bots).</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Sidestep</h4>
+                        <p>Bypasses security measures (e.g., backdoors, rootkits).</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="defenses">
+                <h2>Defensive Measures</h2>
+                
+                <h3>Defenses That Should Be Implemented</h3>
+                <ul>
+                    <li>Managing patches</li>
+                    <li>Running antimalware software</li>
+                    <li>Examining firewalls</li>
+                    <li>Stopping ransomware</li>
+                    <li>Disabling unnecessary services</li>
+                </ul>
+                
+                <h3>Antimalware Software</h3>
+                <p>Software that can combat various malware attacks. Common types:</p>
+                
+                <div class="attack-types">
+                    <div class="attack-card">
+                        <h4>Antivirus</h4>
+                        <p>Scans a computer for infections, monitors activity, examines new files.</p>
+                        <p>Works by matching to known virus "signatures". Due to many types of malware, is no longer considered a "magic bullet".</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Comprehensive Antimalware Software</h4>
+                        <p>Provides intrusion prevention by analyzing information, reputation protection, classifying apps, and behavioral protection, blocking suspicious software.</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Windows Defender</h4>
+                        <p>Anti-virus built-in for the Windows OS.</p>
+                    </div>
+                </div>
+                
+                <h3>Patch Management</h3>
+                <p>Managing patches is crucial for cybersecurity. Regularly updating software and operating systems helps protect against known vulnerabilities that attackers might exploit.</p>
+                
+                <h3>Firewalls</h3>
+                <div class="attack-types">
+                    <div class="attack-card">
+                        <h4>Software-based Personal Firewall</h4>
+                        <p>Designed to prevent malware from entering a computer, examines incoming data from the Internet or local network.</p>
+                        <p>User can create an opening in the firewall just for an approved program to communicate across a local network or an Internet server.</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Hardware-based Network Firewall</h4>
+                        <p>Designed to protect an entire network. Usually located at the "edge" of it as the first line of defense.</p>
+                    </div>
+                    
+                    <div class="attack-card">
+                        <h4>Intrusion Prevention System (IPS)</h4>
+                        <p>A system to stop attacks, analyzing the traffic in order to possibly spot patterns often used in the attack and cut it off.</p>
+                    </div>
+                </div>
+                
+                <h3>Stopping Ransomware</h3>
+                <ul>
+                    <li>Unplug devices when not used</li>
+                    <li>Isolate the computer from storage devices</li>
+                    <li>Create data backups, including continuous online backups</li>
+                    <li>Maintain regular backups of important data</li>
+                    <li>Use reputable security software with ransomware protection</li>
+                    <li>Keep all software updated with the latest patches</li>
+                    <li>Be cautious with email attachments and links</li>
+                    <li>Use application whitelisting to prevent unauthorized programs from running</li>
+                </ul>
+                
+                <h3>Password Security</h3>
+                <p>When you create a password, it's converted into a scrambled form using a one-way hash algorithm. This hashed password is stored on servers. When you log in, the server hashes your entered password and compares it to the stored hash.</p>
+                
+                <div class="important-box">
+                    <h4>Guidelines for Strong Passwords:</h4>
+                    <ul>
+                        <li>Avoid dictionary words, phonetic words, repeated characters, and sequences</li>
+                        <li>Do not use personal information such as birthdays, family member names, or addresses</li>
+                        <li>Use longer passwords (length contributes more to security than complexity)</li>
+                        <li>Incorporate non-keyboard characters</li>
+                    </ul>
+                </div>
+                
+                <div class="important-box">
+                    <h4>Surprising characteristics of weak passwords:</h4>
+                    <ul>
+                        <li>Password that can be memorized</li>
+                        <li>Repeated use of the same password on multiple accounts</li>
+                    </ul>
+                </div>
+                
+                <h4>Password Managers</h4>
+                <p>Technologies used for securing passwords are called password managers. There are different types of password managers, and they all provide a higher degree of password security than relying on human memory.</p>
+                
+                <h3>Multi-Factor Authentication</h3>
+                <p>Two-Factor Authentication (2FA) uses a secondary form of authentication, such as a code sent to your smartphone, in addition to your password.</p>
+                
+                <h3>General Defenses</h3>
+                <ul>
+                    <li>Recognizing social engineering attacks</li>
+                    <li>Taking steps to avoid identity theft</li>
+                    <li>Reducing social networking risks</li>
+                    <li>Staying informed about common cyber threats</li>
+                    <li>Keeping your software updated</li>
+                    <li>Disabling unnecessary services</li>
+                </ul>
+                
+                <div class="important-box">
+                    <p>Starting with personal security defenses is a logical and effective approach.</p>
+                </div>
+            </section>
+            
+            <section id="mobile-security">
+                <h2>Mobile Security</h2>
+                
+                <h3>Introduction to Mobile Security</h3>
+                <ul>
+                    <li>Mobile devices now account for over half of daily computing time.</li>
+                    <li><strong>Nomophobia</strong>: Fear of being without a mobile phone.</li>
+                    <li>Wireless networks are prime targets for attackers due to unprotected signals.</li>
+                </ul>
+
+                <h3>Wireless Networks & Their Vulnerabilities</h3>
+                <div class="attack-types">
+                    <div class="attack-card">
+                        <h4>Wi-Fi</h4>
+                        <p>A Wireless Local Area Network (WLAN) using radio frequencies. Standards range from 802.11 (2 Mbps) to Wi-Fi 6E (9.6 Gbps).</p>
+                        <p><strong>Equipment:</strong> Wireless Routers for homes and Access Points (APs) for businesses.</p>
+                        <p><strong>Attacks:</strong> Data theft, eavesdropping, malware injection, and evil twin APs.</p>
+                    </div>
+                    <div class="attack-card">
+                        <h4>Bluetooth</h4>
+                        <p>Short-range (up to 10m) communication for hands-free devices, headphones, and sensors.</p>
+                        <p><strong>Attacks:</strong></p>
+                        <ul>
+                            <li><strong>Bluejacking:</strong> Sending unsolicited messages.</li>
+                            <li><strong>Bluesnarfing:</strong> Unauthorized data access.</li>
+                        </ul>
+                    </div>
+                    <div class="attack-card">
+                        <h4>Near Field Communication (NFC)</h4>
+                        <p>Very short-range (~4cm) used for payments, access control, and tickets.</p>
+                        <p><strong>Risks:</strong> Eavesdropping, data theft, man-in-the-middle attacks, and device theft.</p>
+                        <p><strong>Defenses:</strong> Turn off NFC in crowds, configure send/receive-only modes, and use strong PINs.</p>
+                    </div>
+                </div>
+                
+                <h3>Mobile Devices: Types & Risks</h3>
+                <h4>Device Types</h4>
+                <p>Includes tablets, smartphones, wearables (smartwatches, fitness trackers), and portable computers (laptops, notebooks).</p>
+                
+                <h4>Core Features</h4>
+                <p>Small form factor, mobile OS, Wi-Fi/cellular connectivity, apps, and local data storage.</p>
+                
+                <h4>Risks</h4>
+                <ul>
+                    <li><strong>Unsecured Apps:</strong> Jailbreaking (iOS) or rooting (Android) bypasses built-in security.</li>
+                    <li><strong>Untrusted Content:</strong> Malicious links in SMS/MMS/RCS messages or QR codes directing to harmful sites.</li>
+                    <li><strong>Physical Threats:</strong> Device loss/theft and limited update support (Apple: up to 8 years; Google: up to 3 years).</li>
+                    <li><strong>Public Networks:</strong> Vulnerable to evil twin APs and eavesdropping.</li>
+                    <li><strong>Location Tracking:</strong> GPS tagging can expose your physical location.</li>
+                </ul>
+                
+                <h3>Defenses for Wireless Networks</h3>
+                <h4>Home Wi-Fi Security</h4>
+                <ul>
+                    <li><strong>Secure the Router:</strong> Set a strong password, disable remote administration, and apply firmware patches.</li>
+                    <li><strong>Encryption:</strong> Use WPA2-Personal or WPA3-Personal with a strong, unique passphrase.</li>
+                    <li><strong>Additional Settings:</strong> Change the default SSID to a non-identifiable name and enable guest network isolation.</li>
+                </ul>
+                
+                <h4>Public Wi-Fi & Bluetooth</h4>
+                <ul>
+                    <li>Use a Virtual Private Network (VPN) for encryption on public networks.</li>
+                    <li>Avoid sensitive transactions (e.g., banking) on public Wi-Fi.</li>
+                    <li>Disable Bluetooth when not in use and set devices to "undiscoverable."</li>
+                </ul>
+
+                <h3>Defenses for Mobile Devices</h3>
+                <h4>Device Configuration</h4>
+                <ul>
+                    <li><strong>Lock Screen:</strong> Use strong passwords, biometrics (fingerprint/face), or complex swipe patterns. Avoid common PINs like "1234".</li>
+                    <li><strong>Security Settings:</strong> Extend lockout periods after failed attempts and enable a factory reset after repeated failures.</li>
+                </ul>
+                
+                <h4>Best Practices</h4>
+                <ul>
+                    <li>Avoid jailbreaking or rooting your device.</li>
+                    <li>Do not sideload unapproved apps from unofficial sources.</li>
+                    <li>Regularly back up your data.</li>
+                    <li>Treat unsolicited texts with the same suspicion as phishing emails.</li>
+                    <li>Sanitize (wipe) devices before disposal.</li>
+                </ul>
+
+                <h4>Theft/Loss Response</h4>
+                <ul>
+                    <li>Keep devices hidden in high-risk areas.</li>
+                    <li>Use "find my phone" features to locate, remotely lock, or wipe the device.</li>
+                    <li>Contact your carrier and the police; change critical passwords for online accounts immediately.</li>
+                </ul>
+
+                <h3>Summary of Key Mobile Security Terms</h3>
+                <div class="attack-types">
+                    <div class="attack-card">
+                        <h4>Evil Twin</h4>
+                        <p>A rogue Access Point (AP) that mimics a legitimate Wi-Fi network to intercept traffic.</p>
+                    </div>
+                    <div class="attack-card">
+                        <h4>Jailbreaking/Rooting</h4>
+                        <p>The process of bypassing operating system restrictions on a mobile device to gain greater control.</p>
+                    </div>
+                    <div class="attack-card">
+                        <h4>Sideloading</h4>
+                        <p>Installing applications onto a mobile device from unofficial sources, bypassing the official app store.</p>
+                    </div>
+                    <div class="attack-card">
+                        <h4>Geotagging</h4>
+                        <p>The process of embedding location data (GPS coordinates) into photos, videos, or other media files.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="technical">
+                <h2>Technical Information</h2>
+                
+                <div class="definition-box">
+                    <ul>
+                        <li><strong>MAC address</strong> - 48 bits, used locally, decimal form</li>
+                        <li><strong>Router</strong> - Gateway to Internet, connects different networks</li>
+                        <li><strong>Switch</strong> - Does not connect different networks, uses same network, switches based on MAC address</li>
+                        <li><strong>IP address</strong> - Used by router, not by the switch, decimal form, in blocks (4 bits) connected by dots</li>
+                        <li><strong>IPv4</strong> - Old addressing system</li>
+                        <li><strong>IPv6</strong> - New addressing system</li>
+                        <li><strong>HTTP</strong> - Used for communication between browser and website</li>
+                        <li><strong>HTTPS</strong> - More secure version of HTTP</li>
+                    </ul>
+                </div>
+                
+                <p>To connect, a PC needs both a MAC address AND an IP address.</p>
+                
+                <h3>Checking IP Configuration</h3>
+                <p>To check your IP configuration in Windows:</p>
+                <div class="command-box">
+                    ipconfig
+                </div>
+                <p>This command displays the current IP configuration for all network adapters on your system.</p>
+                
+                <div class="important-box">
+                    <p>Example of efficient malware delivery: emails (phishing)</p>
+                </div>
+            </section>
+            
+            <section id="misc">
+                <h2>Miscellaneous</h2>
+                
+                <h3>Identity Theft</h3>
+                <p>Using stolen personal information for financial gain, leading to severe consequences for victims.</p>
+                
+                <h3>Security Strategy</h3>
+                <div class="important-box">
+                    <p>Five key elements to creating a practical security strategy:</p>
+                    <ol>
+                        <li>Block attacks</li>
+                        <li>Update defenses</li>
+                        <li>Minimize losses</li>
+                        <li>Use layers</li>
+                        <li>Stay alert</li>
+                    </ol>
+                </div>
+                
+                <h3>Productivity Impact</h3>
+                <p>Cleaning up after an attack diverts resources and reduces productivity.</p>
+                
+                <h3>Shared Responsibility</h3>
+                <p>Cybersecurity is also a responsibility of users - knowledge of proper behavior is needed, as well as motivation to stay secure. There are practical steps everyone can take to enhance their security without resorting to extremes.</p>
+            </section>
+        </main>
+    </div>
+    
+    <footer>
+        <p>Cybersecurity Reference Guide | Comprehensive overview of threats and defenses</p>
+    </footer>
+</body>
+</html>
