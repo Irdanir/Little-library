@@ -654,115 +654,147 @@
                     <p>Starting with personal security defenses is a logical and effective approach.</p>
                 </div>
             </section>
-            
+
             <section id="mobile-security">
                 <h2>Mobile Security</h2>
+                <h3>Introduction</h3>
+                <p>Mobile devices now account for over half of users' daily computing time, leading to phenomena like <strong>"nomophobia"</strong> (fear of being without a phone). This reliance makes wireless networks and the devices themselves prime targets for attackers seeking to capture unprotected signals and data.</p>
                 
-                <h3>Introduction to Mobile Security</h3>
-                <ul>
-                    <li>Mobile devices now account for over half of daily computing time.</li>
-                    <li><strong>Nomophobia</strong>: Fear of being without a mobile phone.</li>
-                    <li>Wireless networks are prime targets for attackers due to unprotected signals.</li>
-                </ul>
+                <h3>Part 1: Attacks on Wireless Networks</h3>
+                <p>Wireless networks are a critical vulnerability point. The main types are Wi-Fi, Bluetooth, and Near Field Communication (NFC).</p>
 
-                <h3>Wireless Networks & Their Vulnerabilities</h3>
-                <div class="attack-types">
-                    <div class="attack-card">
-                        <h4>Wi-Fi</h4>
-                        <p>A Wireless Local Area Network (WLAN) using radio frequencies. Standards range from 802.11 (2 Mbps) to Wi-Fi 6E (9.6 Gbps).</p>
-                        <p><strong>Equipment:</strong> Wireless Routers for homes and Access Points (APs) for businesses.</p>
-                        <p><strong>Attacks:</strong> Data theft, eavesdropping, malware injection, and evil twin APs.</p>
-                    </div>
-                    <div class="attack-card">
-                        <h4>Bluetooth</h4>
-                        <p>Short-range (up to 10m) communication for hands-free devices, headphones, and sensors.</p>
-                        <p><strong>Attacks:</strong></p>
+                <h4>1. Wi-Fi</h4>
+                <ul>
+                    <li><strong>Operation:</strong> A Wireless Local Area Network (WLAN) using radio frequency (RF) transmissions. The IEEE sets the standards (802.11 series), with versions evolving from 802.11 (1997) to Wi-Fi 6E (2020), offering increased speed and utilizing different frequency bands.</li>
+                    <li><strong>Equipment:</strong>
                         <ul>
-                            <li><strong>Bluejacking:</strong> Sending unsolicited messages.</li>
-                            <li><strong>Bluesnarfing:</strong> Unauthorized data access.</li>
+                            <li><strong>Chipset:</strong> Internal hardware for sending/receiving signals.</li>
+                            <li><strong>Wireless Router:</strong> The base station for home networks, acting as a Residential WLAN Gateway.</li>
+                            <li><strong>Access Point (AP):</strong> More sophisticated equipment used in businesses/schools, creating "cells" of coverage. Users "roam" between cells via a "handoff" process.</li>
+                            <li><strong>Mesh Network:</strong> A system with a main router and satellite "nodes" for extended coverage.</li>
                         </ul>
-                    </div>
-                    <div class="attack-card">
-                        <h4>Near Field Communication (NFC)</h4>
-                        <p>Very short-range (~4cm) used for payments, access control, and tickets.</p>
-                        <p><strong>Risks:</strong> Eavesdropping, data theft, man-in-the-middle attacks, and device theft.</p>
-                        <p><strong>Defenses:</strong> Turn off NFC in crowds, configure send/receive-only modes, and use strong PINs.</p>
-                    </div>
-                </div>
-                
-                <h3>Mobile Devices: Types & Risks</h3>
-                <h4>Device Types</h4>
-                <p>Includes tablets, smartphones, wearables (smartwatches, fitness trackers), and portable computers (laptops, notebooks).</p>
-                
-                <h4>Core Features</h4>
-                <p>Small form factor, mobile OS, Wi-Fi/cellular connectivity, apps, and local data storage.</p>
-                
-                <h4>Risks</h4>
-                <ul>
-                    <li><strong>Unsecured Apps:</strong> Jailbreaking (iOS) or rooting (Android) bypasses built-in security.</li>
-                    <li><strong>Untrusted Content:</strong> Malicious links in SMS/MMS/RCS messages or QR codes directing to harmful sites.</li>
-                    <li><strong>Physical Threats:</strong> Device loss/theft and limited update support (Apple: up to 8 years; Google: up to 3 years).</li>
-                    <li><strong>Public Networks:</strong> Vulnerable to evil twin APs and eavesdropping.</li>
-                    <li><strong>Location Tracking:</strong> GPS tagging can expose your physical location.</li>
-                </ul>
-                
-                <h3>Defenses for Wireless Networks</h3>
-                <h4>Home Wi-Fi Security</h4>
-                <ul>
-                    <li><strong>Secure the Router:</strong> Set a strong password, disable remote administration, and apply firmware patches.</li>
-                    <li><strong>Encryption:</strong> Use WPA2-Personal or WPA3-Personal with a strong, unique passphrase.</li>
-                    <li><strong>Additional Settings:</strong> Change the default SSID to a non-identifiable name and enable guest network isolation.</li>
-                </ul>
-                
-                <h4>Public Wi-Fi & Bluetooth</h4>
-                <ul>
-                    <li>Use a Virtual Private Network (VPN) for encryption on public networks.</li>
-                    <li>Avoid sensitive transactions (e.g., banking) on public Wi-Fi.</li>
-                    <li>Disable Bluetooth when not in use and set devices to "undiscoverable."</li>
+                    </li>
+                    <li><strong>Risks & Attacks:</strong> Attackers on home Wi-Fi can steal data, read transmissions, inject malware, and download harmful content.</li>
                 </ul>
 
-                <h3>Defenses for Mobile Devices</h3>
-                <h4>Device Configuration</h4>
+                <h4>2. Bluetooth</h4>
                 <ul>
-                    <li><strong>Lock Screen:</strong> Use strong passwords, biometrics (fingerprint/face), or complex swipe patterns. Avoid common PINs like "1234".</li>
-                    <li><strong>Security Settings:</strong> Extend lockout periods after failed attempts and enable a factory reset after repeated failures.</li>
+                    <li><strong>Operation:</strong> A short-range wireless technology (up to 10 meters) used for pairing devices in various categories: Automobile (hands-free systems), Home Entertainment (headphones), Photographs (camera to printer), Computer Accessories (keyboards), and Sports/Medical devices (heart rate monitors).</li>
+                    <li><strong>Attacks:</strong>
+                        <ul>
+                            <li><strong>Bluejacking:</strong> Sending unsolicited messages to Bluetooth devices.</li>
+                            <li><strong>Bluesnarfing:</strong> Unauthorized access to and theft of information from a Bluetooth device.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h4>3. Near Field Communication (NFC)</h4>
+                <ul>
+                    <li><strong>Operation:</strong> A set of standards for communication between devices in very close proximity (~4 cm).
+                        <ul>
+                            <li><strong>Passive NFC:</strong> Contains information that can be read but does not itself read data (e.g., smart poster).</li>
+                            <li><strong>Active NFC:</strong> Can both read information and transmit data (e.g., smartphone).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Uses:</strong> Contactless payment systems, entertainment tickets, office access, retail coupons, and transportation turnstiles.</li>
+                    <li><strong>Risks & Defenses:</strong>
+                        <ul>
+                            <li><strong>Eavesdropping:</strong> Intercepting unencrypted communication. <strong>Defense:</strong> Be aware of surroundings.</li>
+                            <li><strong>Data Theft:</strong> Using a portable reader to "bump" and steal payment info. <strong>Defense:</strong> Turn off NFC in crowds.</li>
+                            <li><strong>Man-in-the-Middle Attack:</strong> Intercepting and forging communications. <strong>Defense:</strong> Configure devices in "send-only" or "receive-only" pairing mode.</li>
+                            <li><strong>Device Theft:</strong> Using a stolen phone for payments. <strong>Defense:</strong> Protect smartphones with strong passwords/PINs.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>Part 2: Attacks on Mobile Devices</h3>
+                <p>Mobile devices include Tablets, Smartphones, Wearables (e.g., smartwatches, fitness trackers), and Portable Computers (laptops, notebooks, 2-in-1s). They share core features like a small form factor, a mobile OS, wireless interfaces, apps, and data storage.</p>
+                
+                <h4>Mobile Device Risks:</h4>
+                <ul>
+                    <li><strong>Installing Unsecured Applications:</strong> Many apps lack security features.
+                        <ul>
+                            <li><strong>Jailbreaking (Apple) / Rooting (Android):</strong> Circumventing built-in OS limitations to download from unofficial third-party app stores (<strong>sideloading</strong>). This bypasses built-in security protections.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Accessing Untrusted Content:</strong>
+                        <ul>
+                            <li><strong>SMS/MMS/RCS:</strong> Text-based services (SMS), multimedia messages (MMS), and rich chat platforms (RCS) can contain malicious links.</li>
+                            <li><strong>QR Codes:</strong> Two-dimensional barcodes that can store malicious URLs.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Limited Physical Security:</strong> Devices are easily lost or stolen.</li>
+                    <li><strong>Constrained Updates:</strong> Security patches are delivered via Over-The-Air (OTA) updates. Support lifespans vary (Apple: up to 8 years; Google: up to 3 years), leaving older devices vulnerable.</li>
+                    <li><strong>Connecting to Public Networks:</strong> Risk of eavesdropping and connecting to an <strong>Evil Twin</strong> AP that mimics a legitimate network.</li>
+                    <li><strong>Location Tracking:</strong>
+                        <ul>
+                            <li><strong>Geolocation:</strong> Identifying a device's geographical location.</li>
+                            <li><strong>GPS Tagging (Geotagging):</strong> Adding geographical data to media, increasing the risk of targeted physical attacks.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>Part 3: Mobile Defenses</h3>
+                <h4>A. Wireless Network Security</h4>
+                <ul>
+                    <li><strong>Home Wi-Fi Security:</strong>
+                        <ul>
+                            <li><strong>Secure the Router:</strong> Set a strong password (change from default), apply available security patches, and disable remote administration.</li>
+                            <li><strong>Enable Wi-Fi Protected Access Personal:</strong> Encrypts the signal and prevents unauthorized access.
+                                <ul>
+                                    <li><strong>WPA2 Personal:</strong> For all non-Wi-Fi 6E devices. Configure by enabling on the router and entering a passphrase on each device. Wi-Fi Protected Setup (WPS) can simplify this.</li>
+                                    <li><strong>WPA3 Personal:</strong> For Wi-Fi 6E devices. Enabled at the router using the Wi-Fi Device Provisioning Protocol (DPP).</li>
+                                </ul>
+                            </li>
+                            <li><strong>Other Settings:</strong> Change the SSID to an anonymous name and enable a separate guest network to isolate guest traffic from the main network.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Using Public Wi-Fi:</strong>
+                        <ul>
+                            <li>Watch for Evil Twin networks.</li>
+                            <li>Limit activities to non-sensitive browsing; avoid banking or sending confidential data.</li>
+                            <li>Use a <strong>Virtual Private Network (VPN)</strong> to create a secure connection over the public network.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Configuring Bluetooth:</strong> Disable it when not in use or set the device to "undiscoverable."</li>
                 </ul>
                 
-                <h4>Best Practices</h4>
+                <h4>B. Mobile Device Security</h4>
                 <ul>
-                    <li>Avoid jailbreaking or rooting your device.</li>
-                    <li>Do not sideload unapproved apps from unofficial sources.</li>
-                    <li>Regularly back up your data.</li>
-                    <li>Treat unsolicited texts with the same suspicion as phishing emails.</li>
-                    <li>Sanitize (wipe) devices before disposal.</li>
+                    <li><strong>Device Configuration:</strong>
+                        <ul>
+                            <li>Disable unused features that could serve as threat vectors.</li>
+                            <li><strong>Enable Lock Screen:</strong> Use a strong method (password, facial recognition, fingerprint) rather than a weak PIN (e.g., 1234, 1111).</li>
+                            <li><strong>Extended Lockout Period:</strong> Configuring the device to impose increasingly longer lockout periods after successive incorrect passcode entries.</li>
+                            <li><strong>Reset to Factory Settings:</strong> After a set number of failed passcode attempts, the device can be configured to erase all data.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Best Practices:</strong>
+                        <ul>
+                            <li>Do not jailbreak or root the device.</li>
+                            <li>Do not sideload unapproved apps.</li>
+                            <li>Back up device data regularly.</li>
+                            <li>Use proper sanitization procedures before disposal.</li>
+                            <li>Treat unsolicited text messages like phishing emails; do not call numbers contained within them.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Device Loss or Theft:</strong>
+                        <ul>
+                            <li><strong>Prevention:</strong> Keep devices out of sight in high-risk areas, avoid distractions, use both hands, and be cautious on escalators or near train doors. Using wireless earbuds is safer than visible headphone cords.</li>
+                            <li><strong>Response Plan if Stolen:</strong>
+                                <ol>
+                                    <li>Call or send an alert via the carrier's app.</li>
+                                    <li>Text the phone.</li>
+                                    <li>Use the "find my phone" feature.</li>
+                                    <li>Remotely erase data.</li>
+                                    <li>Lock the phone and change associated passwords.</li>
+                                    <li>Contact the mobile carrier.</li>
+                                    <li>Alert the police.</li>
+                                </ol>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
-
-                <h4>Theft/Loss Response</h4>
-                <ul>
-                    <li>Keep devices hidden in high-risk areas.</li>
-                    <li>Use "find my phone" features to locate, remotely lock, or wipe the device.</li>
-                    <li>Contact your carrier and the police; change critical passwords for online accounts immediately.</li>
-                </ul>
-
-                <h3>Summary of Key Mobile Security Terms</h3>
-                <div class="attack-types">
-                    <div class="attack-card">
-                        <h4>Evil Twin</h4>
-                        <p>A rogue Access Point (AP) that mimics a legitimate Wi-Fi network to intercept traffic.</p>
-                    </div>
-                    <div class="attack-card">
-                        <h4>Jailbreaking/Rooting</h4>
-                        <p>The process of bypassing operating system restrictions on a mobile device to gain greater control.</p>
-                    </div>
-                    <div class="attack-card">
-                        <h4>Sideloading</h4>
-                        <p>Installing applications onto a mobile device from unofficial sources, bypassing the official app store.</p>
-                    </div>
-                    <div class="attack-card">
-                        <h4>Geotagging</h4>
-                        <p>The process of embedding location data (GPS coordinates) into photos, videos, or other media files.</p>
-                    </div>
-                </div>
             </section>
             
             <section id="technical">
